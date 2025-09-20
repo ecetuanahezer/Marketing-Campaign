@@ -1,4 +1,3 @@
-import pandas as pd
 import random
 
 # campaigns
@@ -30,5 +29,3 @@ for ad_group in ad_groups:
             "cpc": 0   # placeholder
         })
 
-metrics_df = pd.DataFrame(metrics)
-metrics_df.head()
