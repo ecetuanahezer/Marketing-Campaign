@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import random
 
 # campaigns
@@ -16,10 +17,15 @@ ad_groups = [
     {"id": 301, "campaign_id": 3, "name": "Retargeting Display Ads", "status": "ENABLED"},
 ]
 
+start_date = datetime(2025, 1, 1)   # start date
+num_days = 90
+
 # Metrics
 metrics = []
 for ad_group in ad_groups:
-    for day in range(1, 8):  # 1 week of data
+    for day in range(num_days):  # 90 days of data
+        day_no = start_date + timedelta(days=day)
+        
         impressions = random.randint(500, 5000)
         clicks = random.randint(50, 500)
         cost = round(random.uniform(20, 200), 2)
@@ -30,7 +36,7 @@ for ad_group in ad_groups:
 
         metrics.append({
             "ad_group_id": ad_group["id"],
-            "date": f"2025-09-0{day}",
+            "date": day_no.strftime("%Y-%m-%d"),   # YYYY-MM-DD format
             "impressions": impressions,
             "clicks": clicks,
             "cost": cost,
